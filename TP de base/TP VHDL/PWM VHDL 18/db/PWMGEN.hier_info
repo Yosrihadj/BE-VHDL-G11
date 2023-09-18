@@ -1,0 +1,20 @@
+|PWM_Generator
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+reset_n => counter[0].ACLR
+reset_n => counter[1].ACLR
+reset_n => counter[2].ACLR
+reset_n => counter[3].ACLR
+reset_n => counter[4].ACLR
+reset_n => counter[5].ACLR
+reset_n => counter[6].ACLR
+reset_n => counter[7].ACLR
+pwm_out <= LessThan0.DB_MAX_OUTPUT_PORT_TYPE
+
+

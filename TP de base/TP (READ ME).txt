@@ -1,0 +1,8 @@
+TP VHDL DE BASE (LISEZ-MOI): ici c'est les TPs de base avec les différentes parties à réaliser sur Quartus II 9 pour la carte DE2 et Quartus 18 pour la carte DE0 Nano:
+
+- Réalisation du décodeur BCD / 7segments
+- Réalisation d’un compteur BCD (version amelioree 3)
+- Génération du signal de 1 Hz
+- PWM sur DE2
+- Modelsim sur la carte DE0 Nano
+- Generation du code VHDL pour ocsiloscope de la carte DE0 Nano

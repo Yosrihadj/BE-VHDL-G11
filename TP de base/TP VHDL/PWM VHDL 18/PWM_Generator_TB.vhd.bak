@@ -1,0 +1,45 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity PWM_Generator_TB is
+end PWM_Generator_TB;
+
+architecture TB_ARCH of PWM_Generator_TB is
+   signal reset_n_tb : std_logic := '1';
+   signal freq_tb : std_logic_vector(7 downto 0) := "11001000";  
+   signal duty_tb : std_logic_vector(7 downto 0) := "01100100";  
+   signal pwm_out_tb : std_logic;
+
+   component PWM_Generator
+      Port (
+         clk : in std_logic;
+         reset_n : in std_logic;
+         freq : in std_logic_vector(7 downto 0);
+         duty : in std_logic_vector(7 downto 0);
+         pwm_out : out std_logic
+      );
+   end component;
+
+begin
+   DUT: PWM_Generator
+      port map (
+         clk => '1',  
+         reset_n => reset_n_tb,
+         freq => freq_tb,
+         duty => duty_tb,
+         pwm_out => pwm_out_tb
+      );
+
+   
+   process
+   begin
+      reset_n_tb <= '0'; -- Assert reset
+      wait for 10 ns;
+      reset_n_tb <= '1'; -- De-assert reset
+      wait for 500 ns;   -- Run the simulation for some time
+      -- You can add more test cases here if needed
+      wait;
+   end process;
+end TB_ARCH;

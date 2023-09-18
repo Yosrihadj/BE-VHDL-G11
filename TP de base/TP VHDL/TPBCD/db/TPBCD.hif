@@ -1,0 +1,192 @@
+Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+11
+1000
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+adder
+# storage
+db|TPBCD.(1).cnf
+db|TPBCD.(1).cnf
+# case_insensitive
+# source_file
+adder.bdf
+35dbe0ccee5f8a9fcd7d36febe861cf
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# macro_sequence
+
+# end
+# entity
+Clock_Divider
+# storage
+db|TPBCD.(2).cnf
+db|TPBCD.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+div|div.vhd
+559c54f1c22a44f1cf85f6dcfbbb29f
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+Clock_Divider:inst5
+}
+# lmf
+..|..|..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+TEST
+# storage
+db|TPBCD.(6).cnf
+db|TPBCD.(6).cnf
+# case_insensitive
+# source_file
+div|TEST.bdf
+525328ea47e6f49cf13465cbbf8140a2
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# macro_sequence
+
+# end
+# entity
+segment
+# storage
+db|TPBCD.(5).cnf
+db|TPBCD.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+TPBCD.vhd
+a8a31f4e0d226b0dd2ab624b321fd9b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+segment:inst1
+}
+# lmf
+..|..|..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+segcounter
+# storage
+db|TPBCD.(0).cnf
+db|TPBCD.(0).cnf
+# case_insensitive
+# source_file
+segcounter.bdf
+4e343ab9ad6ac41aa0558173f3a7cc3
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# macro_sequence
+
+# end
+# entity
+Counter_BCD
+# storage
+db|TPBCD.(3).cnf
+db|TPBCD.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+BCD_counter.vhd
+a585a2b1bbba4d4c43a6e624a2da1a4
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+Counter_BCD:inst
+}
+# lmf
+..|..|..|..|..|altera|90sp2|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+div
+# storage
+db|TPBCD.(4).cnf
+db|TPBCD.(4).cnf
+# case_insensitive
+# source_file
+div|div.bdf
+31b83b49eb6fe47f36cbb6c637aaf7e
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# complete
+

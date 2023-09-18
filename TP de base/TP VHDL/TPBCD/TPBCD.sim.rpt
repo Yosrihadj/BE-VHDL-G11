@@ -1,0 +1,354 @@
+Simulator report for TPBCD
+Thu Sep 07 08:56:58 2023
+Quartus II Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2009 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 100.0 us     ;
+; Simulation Netlist Size     ; 130 nodes    ;
+; Simulation Coverage         ;      49.61 % ;
+; Total Number of Transitions ; 72481        ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
++-----------------------------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                       ;
++--------------------------------------------------------------------------------------------+-------------+---------------+
+; Option                                                                                     ; Setting     ; Default Value ;
++--------------------------------------------------------------------------------------------+-------------+---------------+
+; Simulation mode                                                                            ; Functional  ; Timing        ;
+; Start time                                                                                 ; 0 ns        ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF        ;               ;
+; Vector input source                                                                        ; div/div.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On          ; On            ;
+; Check outputs                                                                              ; Off         ; Off           ;
+; Report simulation coverage                                                                 ; On          ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On          ; On            ;
+; Display missing 1-value coverage report                                                    ; On          ; On            ;
+; Display missing 0-value coverage report                                                    ; On          ; On            ;
+; Detect setup and hold time violations                                                      ; Off         ; Off           ;
+; Detect glitches                                                                            ; Off         ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off         ; Off           ;
+; Generate Signal Activity File                                                              ; Off         ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off         ; Off           ;
+; Group bus channels in simulation results                                                   ; Off         ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On          ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE  ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off         ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On          ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto        ; Auto          ;
++--------------------------------------------------------------------------------------------+-------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      49.61 % ;
+; Total nodes checked                                 ; 130          ;
+; Total output ports checked                          ; 129          ;
+; Total output ports with complete 1/0-value coverage ; 64           ;
+; Total output ports with no 1/0-value coverage       ; 61           ;
+; Total output ports with no 1-value coverage         ; 64           ;
+; Total output ports with no 0-value coverage         ; 62           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                            ;
++--------------------------+--------------------------+------------------+
+; Node Name                ; Output Port Name         ; Output Port Type ;
++--------------------------+--------------------------+------------------+
+; |Clock_Divider|count~14  ; |Clock_Divider|count~14  ; out              ;
+; |Clock_Divider|count~15  ; |Clock_Divider|count~15  ; out              ;
+; |Clock_Divider|count~16  ; |Clock_Divider|count~16  ; out              ;
+; |Clock_Divider|count~17  ; |Clock_Divider|count~17  ; out              ;
+; |Clock_Divider|count~18  ; |Clock_Divider|count~18  ; out              ;
+; |Clock_Divider|count~19  ; |Clock_Divider|count~19  ; out              ;
+; |Clock_Divider|count~20  ; |Clock_Divider|count~20  ; out              ;
+; |Clock_Divider|count~21  ; |Clock_Divider|count~21  ; out              ;
+; |Clock_Divider|count~22  ; |Clock_Divider|count~22  ; out              ;
+; |Clock_Divider|count~23  ; |Clock_Divider|count~23  ; out              ;
+; |Clock_Divider|count~24  ; |Clock_Divider|count~24  ; out              ;
+; |Clock_Divider|count~25  ; |Clock_Divider|count~25  ; out              ;
+; |Clock_Divider|count~26  ; |Clock_Divider|count~26  ; out              ;
+; |Clock_Divider|count~27  ; |Clock_Divider|count~27  ; out              ;
+; |Clock_Divider|count~28  ; |Clock_Divider|count~28  ; out              ;
+; |Clock_Divider|count~29  ; |Clock_Divider|count~29  ; out              ;
+; |Clock_Divider|count~30  ; |Clock_Divider|count~30  ; out              ;
+; |Clock_Divider|count~31  ; |Clock_Divider|count~31  ; out              ;
+; |Clock_Divider|count[11] ; |Clock_Divider|count[11] ; regout           ;
+; |Clock_Divider|count[10] ; |Clock_Divider|count[10] ; regout           ;
+; |Clock_Divider|count[9]  ; |Clock_Divider|count[9]  ; regout           ;
+; |Clock_Divider|count[8]  ; |Clock_Divider|count[8]  ; regout           ;
+; |Clock_Divider|count[7]  ; |Clock_Divider|count[7]  ; regout           ;
+; |Clock_Divider|count[6]  ; |Clock_Divider|count[6]  ; regout           ;
+; |Clock_Divider|count[5]  ; |Clock_Divider|count[5]  ; regout           ;
+; |Clock_Divider|count[4]  ; |Clock_Divider|count[4]  ; regout           ;
+; |Clock_Divider|count[3]  ; |Clock_Divider|count[3]  ; regout           ;
+; |Clock_Divider|count[2]  ; |Clock_Divider|count[2]  ; regout           ;
+; |Clock_Divider|count[1]  ; |Clock_Divider|count[1]  ; regout           ;
+; |Clock_Divider|count[0]  ; |Clock_Divider|count[0]  ; regout           ;
+; |Clock_Divider|clk       ; |Clock_Divider|clk       ; out              ;
+; |Clock_Divider|Add0~0    ; |Clock_Divider|Add0~0    ; out0             ;
+; |Clock_Divider|Add0~1    ; |Clock_Divider|Add0~1    ; out0             ;
+; |Clock_Divider|Add0~2    ; |Clock_Divider|Add0~2    ; out0             ;
+; |Clock_Divider|Add0~3    ; |Clock_Divider|Add0~3    ; out0             ;
+; |Clock_Divider|Add0~4    ; |Clock_Divider|Add0~4    ; out0             ;
+; |Clock_Divider|Add0~5    ; |Clock_Divider|Add0~5    ; out0             ;
+; |Clock_Divider|Add0~6    ; |Clock_Divider|Add0~6    ; out0             ;
+; |Clock_Divider|Add0~7    ; |Clock_Divider|Add0~7    ; out0             ;
+; |Clock_Divider|Add0~8    ; |Clock_Divider|Add0~8    ; out0             ;
+; |Clock_Divider|Add0~9    ; |Clock_Divider|Add0~9    ; out0             ;
+; |Clock_Divider|Add0~10   ; |Clock_Divider|Add0~10   ; out0             ;
+; |Clock_Divider|Add0~11   ; |Clock_Divider|Add0~11   ; out0             ;
+; |Clock_Divider|Add0~12   ; |Clock_Divider|Add0~12   ; out0             ;
+; |Clock_Divider|Add0~13   ; |Clock_Divider|Add0~13   ; out0             ;
+; |Clock_Divider|Add0~14   ; |Clock_Divider|Add0~14   ; out0             ;
+; |Clock_Divider|Add0~15   ; |Clock_Divider|Add0~15   ; out0             ;
+; |Clock_Divider|Add0~16   ; |Clock_Divider|Add0~16   ; out0             ;
+; |Clock_Divider|Add0~17   ; |Clock_Divider|Add0~17   ; out0             ;
+; |Clock_Divider|Add0~18   ; |Clock_Divider|Add0~18   ; out0             ;
+; |Clock_Divider|Add0~19   ; |Clock_Divider|Add0~19   ; out0             ;
+; |Clock_Divider|Add0~20   ; |Clock_Divider|Add0~20   ; out0             ;
+; |Clock_Divider|Add0~21   ; |Clock_Divider|Add0~21   ; out0             ;
+; |Clock_Divider|Add0~22   ; |Clock_Divider|Add0~22   ; out0             ;
+; |Clock_Divider|Add0~23   ; |Clock_Divider|Add0~23   ; out0             ;
+; |Clock_Divider|Add0~24   ; |Clock_Divider|Add0~24   ; out0             ;
+; |Clock_Divider|Add0~25   ; |Clock_Divider|Add0~25   ; out0             ;
+; |Clock_Divider|Add0~26   ; |Clock_Divider|Add0~26   ; out0             ;
+; |Clock_Divider|Add0~27   ; |Clock_Divider|Add0~27   ; out0             ;
+; |Clock_Divider|Add0~28   ; |Clock_Divider|Add0~28   ; out0             ;
+; |Clock_Divider|Add0~29   ; |Clock_Divider|Add0~29   ; out0             ;
+; |Clock_Divider|Add0~30   ; |Clock_Divider|Add0~30   ; out0             ;
+; |Clock_Divider|Add0~31   ; |Clock_Divider|Add0~31   ; out0             ;
+; |Clock_Divider|Add0~32   ; |Clock_Divider|Add0~32   ; out0             ;
++--------------------------+--------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                               ;
++--------------------------+--------------------------+------------------+
+; Node Name                ; Output Port Name         ; Output Port Type ;
++--------------------------+--------------------------+------------------+
+; |Clock_Divider|count~0   ; |Clock_Divider|count~0   ; out              ;
+; |Clock_Divider|count~1   ; |Clock_Divider|count~1   ; out              ;
+; |Clock_Divider|count~2   ; |Clock_Divider|count~2   ; out              ;
+; |Clock_Divider|count~3   ; |Clock_Divider|count~3   ; out              ;
+; |Clock_Divider|count~4   ; |Clock_Divider|count~4   ; out              ;
+; |Clock_Divider|count~5   ; |Clock_Divider|count~5   ; out              ;
+; |Clock_Divider|count~6   ; |Clock_Divider|count~6   ; out              ;
+; |Clock_Divider|count~7   ; |Clock_Divider|count~7   ; out              ;
+; |Clock_Divider|count~8   ; |Clock_Divider|count~8   ; out              ;
+; |Clock_Divider|count~9   ; |Clock_Divider|count~9   ; out              ;
+; |Clock_Divider|count~10  ; |Clock_Divider|count~10  ; out              ;
+; |Clock_Divider|count~11  ; |Clock_Divider|count~11  ; out              ;
+; |Clock_Divider|count~12  ; |Clock_Divider|count~12  ; out              ;
+; |Clock_Divider|count~13  ; |Clock_Divider|count~13  ; out              ;
+; |Clock_Divider|count[31] ; |Clock_Divider|count[31] ; regout           ;
+; |Clock_Divider|count[30] ; |Clock_Divider|count[30] ; regout           ;
+; |Clock_Divider|count[29] ; |Clock_Divider|count[29] ; regout           ;
+; |Clock_Divider|count[28] ; |Clock_Divider|count[28] ; regout           ;
+; |Clock_Divider|count[27] ; |Clock_Divider|count[27] ; regout           ;
+; |Clock_Divider|count[26] ; |Clock_Divider|count[26] ; regout           ;
+; |Clock_Divider|count[25] ; |Clock_Divider|count[25] ; regout           ;
+; |Clock_Divider|count[24] ; |Clock_Divider|count[24] ; regout           ;
+; |Clock_Divider|count[23] ; |Clock_Divider|count[23] ; regout           ;
+; |Clock_Divider|count[22] ; |Clock_Divider|count[22] ; regout           ;
+; |Clock_Divider|count[21] ; |Clock_Divider|count[21] ; regout           ;
+; |Clock_Divider|count[20] ; |Clock_Divider|count[20] ; regout           ;
+; |Clock_Divider|count[19] ; |Clock_Divider|count[19] ; regout           ;
+; |Clock_Divider|count[18] ; |Clock_Divider|count[18] ; regout           ;
+; |Clock_Divider|count[17] ; |Clock_Divider|count[17] ; regout           ;
+; |Clock_Divider|count[16] ; |Clock_Divider|count[16] ; regout           ;
+; |Clock_Divider|count[14] ; |Clock_Divider|count[14] ; regout           ;
+; |Clock_Divider|count[13] ; |Clock_Divider|count[13] ; regout           ;
+; |Clock_Divider|count[12] ; |Clock_Divider|count[12] ; regout           ;
+; |Clock_Divider|reset     ; |Clock_Divider|reset     ; out              ;
+; |Clock_Divider|clock_out ; |Clock_Divider|clock_out ; pin_out          ;
+; |Clock_Divider|Add0~33   ; |Clock_Divider|Add0~33   ; out0             ;
+; |Clock_Divider|Add0~34   ; |Clock_Divider|Add0~34   ; out0             ;
+; |Clock_Divider|Add0~35   ; |Clock_Divider|Add0~35   ; out0             ;
+; |Clock_Divider|Add0~36   ; |Clock_Divider|Add0~36   ; out0             ;
+; |Clock_Divider|Add0~37   ; |Clock_Divider|Add0~37   ; out0             ;
+; |Clock_Divider|Add0~38   ; |Clock_Divider|Add0~38   ; out0             ;
+; |Clock_Divider|Add0~39   ; |Clock_Divider|Add0~39   ; out0             ;
+; |Clock_Divider|Add0~40   ; |Clock_Divider|Add0~40   ; out0             ;
+; |Clock_Divider|Add0~41   ; |Clock_Divider|Add0~41   ; out0             ;
+; |Clock_Divider|Add0~42   ; |Clock_Divider|Add0~42   ; out0             ;
+; |Clock_Divider|Add0~43   ; |Clock_Divider|Add0~43   ; out0             ;
+; |Clock_Divider|Add0~44   ; |Clock_Divider|Add0~44   ; out0             ;
+; |Clock_Divider|Add0~45   ; |Clock_Divider|Add0~45   ; out0             ;
+; |Clock_Divider|Add0~46   ; |Clock_Divider|Add0~46   ; out0             ;
+; |Clock_Divider|Add0~47   ; |Clock_Divider|Add0~47   ; out0             ;
+; |Clock_Divider|Add0~48   ; |Clock_Divider|Add0~48   ; out0             ;
+; |Clock_Divider|Add0~49   ; |Clock_Divider|Add0~49   ; out0             ;
+; |Clock_Divider|Add0~50   ; |Clock_Divider|Add0~50   ; out0             ;
+; |Clock_Divider|Add0~51   ; |Clock_Divider|Add0~51   ; out0             ;
+; |Clock_Divider|Add0~52   ; |Clock_Divider|Add0~52   ; out0             ;
+; |Clock_Divider|Add0~53   ; |Clock_Divider|Add0~53   ; out0             ;
+; |Clock_Divider|Add0~54   ; |Clock_Divider|Add0~54   ; out0             ;
+; |Clock_Divider|Add0~55   ; |Clock_Divider|Add0~55   ; out0             ;
+; |Clock_Divider|Add0~56   ; |Clock_Divider|Add0~56   ; out0             ;
+; |Clock_Divider|Add0~57   ; |Clock_Divider|Add0~57   ; out0             ;
+; |Clock_Divider|Add0~58   ; |Clock_Divider|Add0~58   ; out0             ;
+; |Clock_Divider|Add0~59   ; |Clock_Divider|Add0~59   ; out0             ;
+; |Clock_Divider|Add0~60   ; |Clock_Divider|Add0~60   ; out0             ;
+; |Clock_Divider|Equal0~0  ; |Clock_Divider|Equal0~0  ; out0             ;
++--------------------------+--------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                               ;
++--------------------------+--------------------------+------------------+
+; Node Name                ; Output Port Name         ; Output Port Type ;
++--------------------------+--------------------------+------------------+
+; |Clock_Divider|count~0   ; |Clock_Divider|count~0   ; out              ;
+; |Clock_Divider|count~1   ; |Clock_Divider|count~1   ; out              ;
+; |Clock_Divider|count~2   ; |Clock_Divider|count~2   ; out              ;
+; |Clock_Divider|count~3   ; |Clock_Divider|count~3   ; out              ;
+; |Clock_Divider|count~4   ; |Clock_Divider|count~4   ; out              ;
+; |Clock_Divider|count~5   ; |Clock_Divider|count~5   ; out              ;
+; |Clock_Divider|count~6   ; |Clock_Divider|count~6   ; out              ;
+; |Clock_Divider|count~7   ; |Clock_Divider|count~7   ; out              ;
+; |Clock_Divider|count~8   ; |Clock_Divider|count~8   ; out              ;
+; |Clock_Divider|count~9   ; |Clock_Divider|count~9   ; out              ;
+; |Clock_Divider|count~10  ; |Clock_Divider|count~10  ; out              ;
+; |Clock_Divider|count~11  ; |Clock_Divider|count~11  ; out              ;
+; |Clock_Divider|count~12  ; |Clock_Divider|count~12  ; out              ;
+; |Clock_Divider|count~13  ; |Clock_Divider|count~13  ; out              ;
+; |Clock_Divider|count[31] ; |Clock_Divider|count[31] ; regout           ;
+; |Clock_Divider|count[30] ; |Clock_Divider|count[30] ; regout           ;
+; |Clock_Divider|count[29] ; |Clock_Divider|count[29] ; regout           ;
+; |Clock_Divider|count[28] ; |Clock_Divider|count[28] ; regout           ;
+; |Clock_Divider|count[27] ; |Clock_Divider|count[27] ; regout           ;
+; |Clock_Divider|count[26] ; |Clock_Divider|count[26] ; regout           ;
+; |Clock_Divider|count[25] ; |Clock_Divider|count[25] ; regout           ;
+; |Clock_Divider|count[24] ; |Clock_Divider|count[24] ; regout           ;
+; |Clock_Divider|count[23] ; |Clock_Divider|count[23] ; regout           ;
+; |Clock_Divider|count[22] ; |Clock_Divider|count[22] ; regout           ;
+; |Clock_Divider|count[21] ; |Clock_Divider|count[21] ; regout           ;
+; |Clock_Divider|count[20] ; |Clock_Divider|count[20] ; regout           ;
+; |Clock_Divider|count[19] ; |Clock_Divider|count[19] ; regout           ;
+; |Clock_Divider|count[18] ; |Clock_Divider|count[18] ; regout           ;
+; |Clock_Divider|count[17] ; |Clock_Divider|count[17] ; regout           ;
+; |Clock_Divider|count[16] ; |Clock_Divider|count[16] ; regout           ;
+; |Clock_Divider|count[15] ; |Clock_Divider|count[15] ; regout           ;
+; |Clock_Divider|reset     ; |Clock_Divider|reset     ; out              ;
+; |Clock_Divider|clock_out ; |Clock_Divider|clock_out ; pin_out          ;
+; |Clock_Divider|Add0~33   ; |Clock_Divider|Add0~33   ; out0             ;
+; |Clock_Divider|Add0~34   ; |Clock_Divider|Add0~34   ; out0             ;
+; |Clock_Divider|Add0~35   ; |Clock_Divider|Add0~35   ; out0             ;
+; |Clock_Divider|Add0~36   ; |Clock_Divider|Add0~36   ; out0             ;
+; |Clock_Divider|Add0~37   ; |Clock_Divider|Add0~37   ; out0             ;
+; |Clock_Divider|Add0~38   ; |Clock_Divider|Add0~38   ; out0             ;
+; |Clock_Divider|Add0~39   ; |Clock_Divider|Add0~39   ; out0             ;
+; |Clock_Divider|Add0~40   ; |Clock_Divider|Add0~40   ; out0             ;
+; |Clock_Divider|Add0~41   ; |Clock_Divider|Add0~41   ; out0             ;
+; |Clock_Divider|Add0~42   ; |Clock_Divider|Add0~42   ; out0             ;
+; |Clock_Divider|Add0~43   ; |Clock_Divider|Add0~43   ; out0             ;
+; |Clock_Divider|Add0~44   ; |Clock_Divider|Add0~44   ; out0             ;
+; |Clock_Divider|Add0~45   ; |Clock_Divider|Add0~45   ; out0             ;
+; |Clock_Divider|Add0~46   ; |Clock_Divider|Add0~46   ; out0             ;
+; |Clock_Divider|Add0~47   ; |Clock_Divider|Add0~47   ; out0             ;
+; |Clock_Divider|Add0~48   ; |Clock_Divider|Add0~48   ; out0             ;
+; |Clock_Divider|Add0~49   ; |Clock_Divider|Add0~49   ; out0             ;
+; |Clock_Divider|Add0~50   ; |Clock_Divider|Add0~50   ; out0             ;
+; |Clock_Divider|Add0~51   ; |Clock_Divider|Add0~51   ; out0             ;
+; |Clock_Divider|Add0~52   ; |Clock_Divider|Add0~52   ; out0             ;
+; |Clock_Divider|Add0~53   ; |Clock_Divider|Add0~53   ; out0             ;
+; |Clock_Divider|Add0~54   ; |Clock_Divider|Add0~54   ; out0             ;
+; |Clock_Divider|Add0~55   ; |Clock_Divider|Add0~55   ; out0             ;
+; |Clock_Divider|Add0~56   ; |Clock_Divider|Add0~56   ; out0             ;
+; |Clock_Divider|Add0~57   ; |Clock_Divider|Add0~57   ; out0             ;
+; |Clock_Divider|Add0~58   ; |Clock_Divider|Add0~58   ; out0             ;
+; |Clock_Divider|Add0~59   ; |Clock_Divider|Add0~59   ; out0             ;
+; |Clock_Divider|Add0~60   ; |Clock_Divider|Add0~60   ; out0             ;
+; |Clock_Divider|Equal0~0  ; |Clock_Divider|Equal0~0  ; out0             ;
++--------------------------+--------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.0 Build 235 06/17/2009 Service Pack 2 SJ Web Edition
+    Info: Processing started: Thu Sep 07 08:56:58 2023
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off TPBCD -c TPBCD
+Info: Using vector source file "div/div.vwf"
+Info: Overwriting simulation input file with simulation results
+    Info: A backup of div.vwf called TPBCD.sim_ori.vwf has been created in the db folder
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      49.61 %
+Info: Number of transitions in simulation is 72481
+Info: Vector file div.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 160 megabytes
+    Info: Processing ended: Thu Sep 07 08:56:58 2023
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
+
+
