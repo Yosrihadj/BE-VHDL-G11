@@ -1,0 +1,16 @@
+Fitter Status : Successful - Thu Sep 21 08:42:28 2023
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : sopc_counter
+Top-level Entity Name : sopc_counters
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 1,797 / 22,320 ( 8 % )
+    Total combinational functions : 1,684 / 22,320 ( 8 % )
+    Dedicated logic registers : 938 / 22,320 ( 4 % )
+Total registers : 938
+Total pins : 11 / 154 ( 7 % )
+Total virtual pins : 0
+Total memory bits : 175,104 / 608,256 ( 29 % )
+Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
