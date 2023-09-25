@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Thu Sep 21 08:42:17 2023
+Analysis & Synthesis Status : Successful - Mon Sep 25 10:50:25 2023
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : sopc_counter
 Top-level Entity Name : sopc_counters
 Family : Cyclone IV E
-Total logic elements : 1,869
-    Total combinational functions : 1,680
-    Dedicated logic registers : 946
-Total registers : 946
-Total pins : 11
+Total logic elements : 2,161
+    Total combinational functions : 1,935
+    Dedicated logic registers : 1,091
+Total registers : 1091
+Total pins : 12
 Total virtual pins : 0
 Total memory bits : 175,104
 Embedded Multiplier 9-bit elements : 0

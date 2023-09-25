@@ -8,13 +8,27 @@ use IEEE.numeric_std.all;
 
 entity sopc_counter is
 	port (
-		buttons_io_external_connection_export : in  std_logic_vector(1 downto 0) := (others => '0'); -- buttons_io_external_connection.export
-		clk_clk                               : in  std_logic                    := '0';             --                            clk.clk
-		leds_io_external_connection_export    : out std_logic_vector(7 downto 0)                     --    leds_io_external_connection.export
+		avalon_pwm_0_conduit_end_writeresponsevalid_n : out std_logic;                                       --       avalon_pwm_0_conduit_end.writeresponsevalid_n
+		buttons_io_external_connection_export         : in  std_logic_vector(1 downto 0) := (others => '0'); -- buttons_io_external_connection.export
+		clk_clk                                       : in  std_logic                    := '0';             --                            clk.clk
+		leds_io_external_connection_export            : out std_logic_vector(7 downto 0)                     --    leds_io_external_connection.export
 	);
 end entity sopc_counter;
 
 architecture rtl of sopc_counter is
+	component avalon_pwm is
+		port (
+			clk        : in  std_logic                     := 'X';             -- clk
+			chipselect : in  std_logic                     := 'X';             -- chipselect
+			write_n    : in  std_logic                     := 'X';             -- write_n
+			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
+			address    : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			reset_n    : in  std_logic                     := 'X';             -- reset_n
+			out_pwm    : out std_logic                                         -- writeresponsevalid_n
+		);
+	end component avalon_pwm;
+
 	component sopc_counter_Buttons_IO is
 		port (
 			clk      : in  std_logic                     := 'X';             -- clk
@@ -125,6 +139,11 @@ architecture rtl of sopc_counter is
 			CPU_instruction_master_waitrequest        : out std_logic;                                        -- waitrequest
 			CPU_instruction_master_read               : in  std_logic                     := 'X';             -- read
 			CPU_instruction_master_readdata           : out std_logic_vector(31 downto 0);                    -- readdata
+			Avalon_pwm_0_avalon_slave_0_address       : out std_logic_vector(1 downto 0);                     -- address
+			Avalon_pwm_0_avalon_slave_0_write         : out std_logic;                                        -- write
+			Avalon_pwm_0_avalon_slave_0_readdata      : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			Avalon_pwm_0_avalon_slave_0_writedata     : out std_logic_vector(31 downto 0);                    -- writedata
+			Avalon_pwm_0_avalon_slave_0_chipselect    : out std_logic;                                        -- chipselect
 			Buttons_IO_s1_address                     : out std_logic_vector(1 downto 0);                     -- address
 			Buttons_IO_s1_readdata                    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			CPU_debug_mem_slave_address               : out std_logic_vector(8 downto 0);                     -- address
@@ -254,6 +273,11 @@ architecture rtl of sopc_counter is
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read            : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_read -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:in
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write           : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_write -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:in
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata       : std_logic_vector(31 downto 0); -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_writedata -> jtag_uart_0:av_writedata
+	signal mm_interconnect_0_avalon_pwm_0_avalon_slave_0_chipselect        : std_logic;                     -- mm_interconnect_0:Avalon_pwm_0_avalon_slave_0_chipselect -> Avalon_pwm_0:chipselect
+	signal mm_interconnect_0_avalon_pwm_0_avalon_slave_0_readdata          : std_logic_vector(31 downto 0); -- Avalon_pwm_0:readdata -> mm_interconnect_0:Avalon_pwm_0_avalon_slave_0_readdata
+	signal mm_interconnect_0_avalon_pwm_0_avalon_slave_0_address           : std_logic_vector(1 downto 0);  -- mm_interconnect_0:Avalon_pwm_0_avalon_slave_0_address -> Avalon_pwm_0:address
+	signal mm_interconnect_0_avalon_pwm_0_avalon_slave_0_write             : std_logic;                     -- mm_interconnect_0:Avalon_pwm_0_avalon_slave_0_write -> mm_interconnect_0_avalon_pwm_0_avalon_slave_0_write:in
+	signal mm_interconnect_0_avalon_pwm_0_avalon_slave_0_writedata         : std_logic_vector(31 downto 0); -- mm_interconnect_0:Avalon_pwm_0_avalon_slave_0_writedata -> Avalon_pwm_0:writedata
 	signal mm_interconnect_0_sysid_qsys_0_control_slave_readdata           : std_logic_vector(31 downto 0); -- sysid_qsys_0:readdata -> mm_interconnect_0:sysid_qsys_0_control_slave_readdata
 	signal mm_interconnect_0_sysid_qsys_0_control_slave_address            : std_logic_vector(0 downto 0);  -- mm_interconnect_0:sysid_qsys_0_control_slave_address -> sysid_qsys_0:address
 	signal mm_interconnect_0_cpu_debug_mem_slave_readdata                  : std_logic_vector(31 downto 0); -- CPU:debug_mem_slave_readdata -> mm_interconnect_0:CPU_debug_mem_slave_readdata
@@ -284,10 +308,23 @@ architecture rtl of sopc_counter is
 	signal rst_controller_reset_out_reset_req                              : std_logic;                     -- rst_controller:reset_req -> [CPU:reset_req, RAM:reset_req, rst_translator:reset_req_in]
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv  : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:inv -> jtag_uart_0:av_write_n
+	signal mm_interconnect_0_avalon_pwm_0_avalon_slave_0_write_ports_inv   : std_logic;                     -- mm_interconnect_0_avalon_pwm_0_avalon_slave_0_write:inv -> Avalon_pwm_0:write_n
 	signal mm_interconnect_0_leds_io_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_leds_io_s1_write:inv -> LEDS_IO:write_n
-	signal rst_controller_reset_out_reset_ports_inv                        : std_logic;                     -- rst_controller_reset_out_reset:inv -> [Buttons_IO:reset_n, CPU:reset_n, LEDS_IO:reset_n, jtag_uart_0:rst_n, sysid_qsys_0:reset_n]
+	signal rst_controller_reset_out_reset_ports_inv                        : std_logic;                     -- rst_controller_reset_out_reset:inv -> [Avalon_pwm_0:reset_n, Buttons_IO:reset_n, CPU:reset_n, LEDS_IO:reset_n, jtag_uart_0:rst_n, sysid_qsys_0:reset_n]
 
 begin
+
+	avalon_pwm_0 : component avalon_pwm
+		port map (
+			clk        => clk_clk,                                                       --          clock.clk
+			chipselect => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_chipselect,      -- avalon_slave_0.chipselect
+			write_n    => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_write_ports_inv, --               .write_n
+			writedata  => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_writedata,       --               .writedata
+			readdata   => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_readdata,        --               .readdata
+			address    => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_address,         --               .address
+			reset_n    => rst_controller_reset_out_reset_ports_inv,                      --          reset.reset_n
+			out_pwm    => avalon_pwm_0_conduit_end_writeresponsevalid_n                  --    conduit_end.writeresponsevalid_n
+		);
 
 	buttons_io : component sopc_counter_Buttons_IO
 		port map (
@@ -393,6 +430,11 @@ begin
 			CPU_instruction_master_waitrequest        => cpu_instruction_master_waitrequest,                          --                                .waitrequest
 			CPU_instruction_master_read               => cpu_instruction_master_read,                                 --                                .read
 			CPU_instruction_master_readdata           => cpu_instruction_master_readdata,                             --                                .readdata
+			Avalon_pwm_0_avalon_slave_0_address       => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_address,       --     Avalon_pwm_0_avalon_slave_0.address
+			Avalon_pwm_0_avalon_slave_0_write         => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_write,         --                                .write
+			Avalon_pwm_0_avalon_slave_0_readdata      => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_readdata,      --                                .readdata
+			Avalon_pwm_0_avalon_slave_0_writedata     => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_writedata,     --                                .writedata
+			Avalon_pwm_0_avalon_slave_0_chipselect    => mm_interconnect_0_avalon_pwm_0_avalon_slave_0_chipselect,    --                                .chipselect
 			Buttons_IO_s1_address                     => mm_interconnect_0_buttons_io_s1_address,                     --                   Buttons_IO_s1.address
 			Buttons_IO_s1_readdata                    => mm_interconnect_0_buttons_io_s1_readdata,                    --                                .readdata
 			CPU_debug_mem_slave_address               => mm_interconnect_0_cpu_debug_mem_slave_address,               --             CPU_debug_mem_slave.address
@@ -502,6 +544,8 @@ begin
 	mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv <= not mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read;
 
 	mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv <= not mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write;
+
+	mm_interconnect_0_avalon_pwm_0_avalon_slave_0_write_ports_inv <= not mm_interconnect_0_avalon_pwm_0_avalon_slave_0_write;
 
 	mm_interconnect_0_leds_io_s1_write_ports_inv <= not mm_interconnect_0_leds_io_s1_write;
 

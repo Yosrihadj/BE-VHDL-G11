@@ -1,0 +1,27 @@
+09:48:58 **** Incremental Build of configuration Nios II for project my_counter ****
+make all 
+Info: Building ../my_counter_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../my_counter_bsp/
+[BSP build complete]
+Info: Compiling hello_world_sopc.c to obj/default/hello_world_sopc.o
+nios2-elf-gcc -xc -MP -MMD -c -I../my_counter_bsp//HAL/inc -I../my_counter_bsp/ -I../my_counter_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world_sopc.o hello_world_sopc.c
+Info: Linking my_counter.elf
+nios2-elf-g++  -T'../my_counter_bsp//linker.x' -msys-crt0='../my_counter_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../my_counter_bsp/  -msmallc  -Wl,-Map=my_counter.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o my_counter.elf obj/default/hello_world_sopc.o -lm -msys-lib=m
+nios2-elf-insert my_counter.elf --thread_model hal --cpu_name CPU --qsys true --simulation_enabled false --id 0 --sidp 0x11030 --timestamp 1695287874 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name sopc_counter --quartus_project_dir "C:/BE-VHDL-G11/BE-VHDL-G11/BE-VHDL/SOPC" --jdi ../..//output_files/sopc_counter.jdi --sopcinfo C:/BE-VHDL-G11/BE-VHDL-G11/BE-VHDL/SOPC/software/my_counter_bsp/../../sopc_counter.sopcinfo
+Info: (my_counter.elf) 3572 Bytes program size (code + initialized data).
+Info:                  16 KBytes free for stack + heap.
+Info: Creating my_counter.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source my_counter.elf >my_counter.objdump
+[my_counter build complete]
+09:49:22 **** Build of configuration Nios II for project my_counter ****
+make all 
+Info: Building ../my_counter_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../my_counter_bsp/
+[BSP build complete]
+[my_counter build complete]
+09:49:25 **** Incremental Build of configuration Nios II for project my_counter ****
+make all 
+Info: Building ../my_counter_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../my_counter_bsp/
+[BSP build complete]
+[my_counter build complete]

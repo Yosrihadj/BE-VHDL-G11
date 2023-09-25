@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--Created by Liquid XML 2008 (www.liquid-technologies.com) for ALTERA CORPORATION-->
+<ProgramExecution xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+	<QuartusExecution>
+		<AddressBits>32</AddressBits>
+		<ApplicationError>
+		<Bits>64</Bits>
+		<CommandLine>quartus C:\Users\Etudiant\Desktop\TP_VHDL\SOPC\sopc_counters.bdf</CommandLine>
+		<ErrorMessage>Failed to create process!</ErrorMessage>
+		<Line>445</Line>
+		<Platform>windows</Platform>
+		<SourceFile>/quartus/ccl/thr/thr_process.c</SourceFile>
+		<StackTrace>
+	   0x281dbe: ccl_thr + 0x1dbe (_thr_internal_error + 0x1e)
+	   0x2815e4: ccl_thr + 0x15e4 (_thr_process_create_and_save_job + 0x404)
+	   0x281b44: ccl_thr + 0x1b44 (_thr_process_create + 0x24)
+	  0x3c442b0: SYS_QUI + 0x542b0 (?nios_action@QUI_TOOLS_MENU@@UAEXXZ + 0x120)
+	  0x3bf8891: SYS_QUI + 0x8891 (?qt_metacall@QUI_TOOLS_MENU@@UAEHW4Call@QMetaObject@@HPAPAX@Z + 0x3c1)
+	 0x670e0eae: QtCore4 + 0xe0eae (?metacall@QMetaObject@@SAHPAVQObject@@W4Call@1@HPAPAX@Z + 0x3e)
+	 0x6500c57d: QtGui4 + 0xc57d (?activate@QAction@@QAEXW4ActionEvent@1@@Z + 0xcd)
+	 0x65348a28: QtGui4 + 0x348a28 (?findIdForAction@QMenu@@ABEHPAVQAction@@@Z + 0x288)
+	 0x6534e500: QtGui4 + 0x34e500 (?internalDelayedPopup@QMenu@@AAEXXZ + 0x680)
+		</StackTrace>
+		<Subsystem>THR</Subsystem>
+	</ApplicationError>
+	<Compilation>
+			<CompileID>0</CompileID>
+			<DeviceFamily/>
+			<IncrementalCompilation/>
+			<TopLevelEntityName/>
+		</Compilation>
+		<DateInvoked>2023/09/21 09:37:49</DateInvoked>
+		<ElapsedTime>460</ElapsedTime>
+		<IP>195.220.51.104</IP>
+		<IsInternal>false</IsInternal>
+		<IsQt>true</IsQt>
+		<License>
+			<Edition>Web Edition</Edition>
+			<LicenseHostID/>
+		</License>
+		<Machine>
+			<CPUCountLogical>8</CPUCountLogical>
+			<CPUCountPhysical>1</CPUCountPhysical>
+			<CPUSpeed>3591</CPUSpeed>
+			<Hostname>U4-305p1</Hostname>
+			<NIC>
+				<Address>000af769a64a</Address>
+			</NIC>
+			<NIC>
+				<Address>989096d2974c</Address>
+			</NIC>
+			<OS>Windows 7</OS>
+			<OSAddressBits>64</OSAddressBits>
+			<OSVersion>6.1</OSVersion>
+			<Platform>windows</Platform>
+			<ScreenResolution>unknown</ScreenResolution>
+			<TotalPhysicalRAM>4095</TotalPhysicalRAM>
+			<TotalVirtualRAM>0</TotalVirtualRAM>
+		</Machine>
+		<Name>quartus</Name>
+		<PeakMemoryUsed>0</PeakMemoryUsed>
+		<ProjectRevision>
+			<ProjectName/>
+			<Revision/>
+		</ProjectRevision>
+		<QuartusInstallation>
+			<InstallationID>47100569162.14425624520474</InstallationID>
+			<Version>
+				<Build>208</Build>
+				<BuildSite>SJ</BuildSite>
+				<BuildSuffix/>
+				<Edition>Web Edition</Edition>
+				<ServicePack>1</ServicePack>
+				<VersionNumber>11</VersionNumber>
+			</Version>
+		</QuartusInstallation>
+		<QuartusUser>
+			<AlteraUserName/>
+			<FAEContactName/>
+			<TalkbackStatus>
+				<DateSet/>
+				<TalkbackOn>true</TalkbackOn>
+			</TalkbackStatus>
+			<UserID>47100569162.166262527004832</UserID>
+			<UserName>Etudiant</UserName>
+		</QuartusUser>
+	</QuartusExecution>
+	<SchemaVersion>schema_2011-03-02</SchemaVersion>
+</ProgramExecution>
+

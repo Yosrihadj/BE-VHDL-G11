@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="96e83e48ebf76b7f2045"/>
+    <hash md5_digest_80b="32f3e4a2e405ffd651aa"/>
   </project>
   <file_info>
     <file device="EP4CE22F17C6" path="sopc_counter.sof" usercode="0xFFFFFFFF"/>
@@ -139,7 +139,7 @@
   <sld_infos>
     <sld_info hpath="sopc_counter:inst" name="inst">
       <assignment_values>
-        <assignment_value text="QSYS_NAME sopc_counter HAS_SOPCINFO 1 GENERATION_ID 1695028854"/>
+        <assignment_value text="QSYS_NAME sopc_counter HAS_SOPCINFO 1 GENERATION_ID 1695631440"/>
       </assignment_values>
       <parameters/>
     </sld_info>

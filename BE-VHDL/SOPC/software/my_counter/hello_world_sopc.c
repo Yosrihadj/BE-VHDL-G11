@@ -98,6 +98,8 @@ int main()
 #include "altera_avalon_pio_regs.h" // pour éviter de renseigner les adresses physiques des périphériques
 #include "unistd.h" 				// pour la fonction délai
 
+#define freq (unsigned int *) AVALON_PWM_0_BASE
+#define duty (unsigned int *) (AVALON_PWM_0_BASE + 4)
 #define boutons (volatile char *) BUTTONS_IO_BASE
 #define leds (unsigned int*) LEDS_IO_BASE
 unsigned int a;
@@ -108,17 +110,19 @@ int main()
 
   while (1)
   	  {
+	  *freq = 0x0400; // divise clk par 1024
+	  *duty = 0x0200; // RC = 50%
 	  alt_putstr("Salut int!\n");	// test si communication OK
 	  //*leds = *boutons;
 	  a = *boutons & 3;
 	  printf("boutons = %d \n", a);
-	  usleep(1000000);
+	  //usleep(1000000);
 	  switch(a)
 	  	  	  {
 	  	  	  	  case 0 : *leds=0; break;
-	  	  	  	  case 1 : *leds=0; break;
+	  	  	  	  case 1 : *leds=*leds + 1; break;
 	  	  	  	  case 2 : break;
-	  	  	  	  case 3 : *leds=*leds + 1; break;
+	  	  	  	  case 3 : *leds=0; break;
 	  	  	  	  default : *leds = 0; break;
 	  	  	  }
 	  }

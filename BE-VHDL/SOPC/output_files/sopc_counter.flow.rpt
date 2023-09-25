@@ -1,5 +1,5 @@
 Flow report for sopc_counter
-Thu Sep 21 08:42:36 2023
+Mon Sep 25 10:50:43 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,18 +40,18 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Sep 21 08:42:32 2023       ;
+; Flow Status                        ; Successful - Mon Sep 25 10:50:39 2023       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; sopc_counter                                ;
 ; Top-level Entity Name              ; sopc_counters                               ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,797 / 22,320 ( 8 % )                      ;
-;     Total combinational functions  ; 1,684 / 22,320 ( 8 % )                      ;
-;     Dedicated logic registers      ; 938 / 22,320 ( 4 % )                        ;
-; Total registers                    ; 938                                         ;
-; Total pins                         ; 11 / 154 ( 7 % )                            ;
+; Total logic elements               ; 2,079 / 22,320 ( 9 % )                      ;
+;     Total combinational functions  ; 1,939 / 22,320 ( 9 % )                      ;
+;     Dedicated logic registers      ; 1,083 / 22,320 ( 5 % )                      ;
+; Total registers                    ; 1083                                        ;
+; Total pins                         ; 12 / 154 ( 8 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 175,104 / 608,256 ( 29 % )                  ;
 ; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                             ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/21/2023 08:41:38 ;
+; Start date & time ; 09/25/2023 10:49:53 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; sopc_counter        ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------------------------------+---------------+---------------+------------+
 ; Assignment Name                     ; Value                                                          ; Default Value ; Entity Name   ; Section Id ;
 +-------------------------------------+----------------------------------------------------------------+---------------+---------------+------------+
-; COMPILER_SIGNATURE_ID               ; 47100569162.169527849707736                                    ; --            ; --            ; --         ;
+; COMPILER_SIGNATURE_ID               ; 47100569162.169563179304528                                    ; --            ; --            ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                             ; --            ; --            ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                              ; --            ; --            ; --         ;
 ; MISC_FILE                           ; sopc_counter/synthesis/../sopc_counter.cmp                     ; --            ; --            ; --         ;
@@ -89,7 +89,7 @@ refer to the applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                   ; --            ; --            ; --         ;
 ; SLD_FILE                            ; sopc_counter/synthesis/sopc_counter.regmap                     ; --            ; --            ; --         ;
 ; SLD_FILE                            ; sopc_counter/synthesis/sopc_counter.debuginfo                  ; --            ; --            ; --         ;
-; SLD_INFO                            ; QSYS_NAME sopc_counter HAS_SOPCINFO 1 GENERATION_ID 1695028854 ; --            ; --            ; --         ;
+; SLD_INFO                            ; QSYS_NAME sopc_counter HAS_SOPCINFO 1 GENERATION_ID 1695631440 ; --            ; --            ; --         ;
 ; SOPCINFO_FILE                       ; sopc_counter/synthesis/../../sopc_counter.sopcinfo             ; --            ; --            ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                             ; --            ; --            ; --         ;
 ; TOP_LEVEL_ENTITY                    ; sopc_counters                                                  ; sopc_counter  ; --            ; --         ;
@@ -101,11 +101,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:37     ; 1.0                     ; 768 MB              ; 00:00:56                           ;
-; Fitter               ; 00:00:10     ; 1.1                     ; 1355 MB             ; 00:00:11                           ;
+; Analysis & Synthesis ; 00:00:30     ; 1.0                     ; 745 MB              ; 00:00:50                           ;
+; Fitter               ; 00:00:09     ; 1.1                     ; 1382 MB             ; 00:00:11                           ;
 ; Assembler            ; 00:00:02     ; 1.0                     ; 546 MB              ; 00:00:02                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.1                     ; 660 MB              ; 00:00:03                           ;
-; Total                ; 00:00:52     ; --                      ; --                  ; 00:01:12                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.1                     ; 663 MB              ; 00:00:03                           ;
+; Total                ; 00:00:44     ; --                      ; --                  ; 00:01:06                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
