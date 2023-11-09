@@ -2,7 +2,7 @@ BE VHDL (LISEZ-MOI): ici les différentes parties à réaliser sur Quartus II 18
 
 - SOPC
 
--
+-COMPAS
 
 -
 
