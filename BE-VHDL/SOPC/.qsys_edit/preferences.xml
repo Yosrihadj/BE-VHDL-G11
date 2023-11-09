@@ -8,6 +8,6 @@
   </columns>
  </systemtable>
  <library expandedCategories="Project,Library" />
- <window width="1916" height="1160" x="0" y="0" />
+ <window width="1916" height="1048" x="0" y="0" />
  <generation path="_PROJECT_NAME_" synthesis="VHDL" greybox="0" />
 </preferences>

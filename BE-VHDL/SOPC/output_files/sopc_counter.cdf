@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE22F17) Path("C:/Users/Etudiant/Desktop/TP_VHDL/SOPC/output_files/") File("sopc_counter.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE22F17) Path("C:/BE-VHDL-G11/BE-VHDL-G11/BE-VHDL/SOPC/output_files/") File("sopc_counter.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

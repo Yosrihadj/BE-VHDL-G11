@@ -88,7 +88,7 @@ refer to the applicable agreement for further details.
 	(annotation_block (location)(rect 448 112 504 136))
 )
 (symbol
-	(rect 616 120 1272 344)
+	(rect 576 120 1232 344)
 	(text "sopc_counter" (rect 289 -1 381 15)(font "Arial" (font_size 10)))
 	(text "inst" (rect 8 208 25 220)(font "Arial" ))
 	(port
@@ -186,31 +186,13 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 424 232)
-	(pt 424 176)
-	(bus)
-)
-(connector
 	(pt 472 248)
 	(pt 368 248)
-)
-(connector
-	(pt 472 248)
-	(pt 472 272)
-)
-(connector
-	(pt 424 312)
-	(pt 424 288)
-	(bus)
 )
 (connector
 	(pt 368 256)
 	(pt 368 288)
 	(bus)
-)
-(connector
-	(pt 464 192)
-	(pt 464 48)
 )
 (connector
 	(pt 464 48)
@@ -221,20 +203,38 @@ refer to the applicable agreement for further details.
 	(pt 272 104)
 )
 (connector
-	(pt 616 192)
-	(pt 464 192)
-)
-(connector
-	(pt 616 232)
+	(pt 424 176)
 	(pt 424 232)
 	(bus)
 )
 (connector
-	(pt 616 272)
+	(pt 472 248)
 	(pt 472 272)
 )
 (connector
-	(pt 616 312)
+	(pt 424 288)
 	(pt 424 312)
+	(bus)
+)
+(connector
+	(pt 464 48)
+	(pt 464 192)
+)
+(connector
+	(pt 464 192)
+	(pt 576 192)
+)
+(connector
+	(pt 424 232)
+	(pt 576 232)
+	(bus)
+)
+(connector
+	(pt 472 272)
+	(pt 576 272)
+)
+(connector
+	(pt 424 312)
+	(pt 576 312)
 	(bus)
 )
