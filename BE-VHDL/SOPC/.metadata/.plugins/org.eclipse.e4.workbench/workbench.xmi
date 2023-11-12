@@ -52,7 +52,7 @@
               <children xsi:type="advanced:Placeholder" xmi:id="_cgxrhVtyEe6h6fvsPdVk7A" elementId="org.eclipse.ui.views.ResourceNavigator" toBeRendered="false" ref="_cguBIVtyEe6h6fvsPdVk7A"/>
               <children xsi:type="advanced:Placeholder" xmi:id="_cgxrhltyEe6h6fvsPdVk7A" elementId="org.eclipse.ui.views.BookmarkView" toBeRendered="false" ref="_cguBIltyEe6h6fvsPdVk7A"/>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_cgxrh1tyEe6h6fvsPdVk7A" containerData="7500" selectedElement="_cgxriFtyEe6h6fvsPdVk7A">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_cgxrh1tyEe6h6fvsPdVk7A" containerData="7500" selectedElement="_cgxrjFtyEe6h6fvsPdVk7A">
               <children xsi:type="basic:PartSashContainer" xmi:id="_cgxriFtyEe6h6fvsPdVk7A" containerData="7500" selectedElement="_cgxriVtyEe6h6fvsPdVk7A" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_cgxriVtyEe6h6fvsPdVk7A" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_cgnTcFtyEe6h6fvsPdVk7A"/>
                 <children xsi:type="basic:PartStack" xmi:id="_cgxriltyEe6h6fvsPdVk7A" elementId="topRight" containerData="2500" selectedElement="_cgxri1tyEe6h6fvsPdVk7A">
@@ -185,7 +185,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_b_TWIFtyEe6h6fvsPdVk7A" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_WHznMFuGEe67Wpy_euFeew" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_bLON01tyEe6h6fvsPdVk7A"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_mzvasIFyEe6iGbaasdEGUA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_bLON01tyEe6h6fvsPdVk7A"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_b_TWIVtyEe6h6fvsPdVk7A" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -209,7 +209,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_b_TWJVtyEe6h6fvsPdVk7A" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_WH1cYVuGEe67Wpy_euFeew" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_bLLxkVtyEe6h6fvsPdVk7A"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_mzxP4IFyEe6iGbaasdEGUA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_bLLxkVtyEe6h6fvsPdVk7A"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_b_TWJltyEe6h6fvsPdVk7A" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
