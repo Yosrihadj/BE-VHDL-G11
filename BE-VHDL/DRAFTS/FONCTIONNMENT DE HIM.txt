@@ -1,0 +1,28 @@
+code VHDL pour faire une IHM module gestion des boutons poussoirs avec:
+entre des bouton poussoir BP_Babord,BP_Tribord, BP_STBY et un  clk_50M  raz_n la reset
+des sorties led ledBabord, ledTribord,ledSTBY et un out_bip et un code fonction pour chaque etat du fonctionnemnt:
+en mode auto : un apput simple sur  BP_STBY : code fonction '0011' et ledSTBY allumee et ilya un simple bip de out_bip, les autres les sont etande
+en mode auto : un apput long sur  BP_STBY : code fonction '0011' et ledSTBY allumee et clingote et ilya un double bip de out_bip, les autres les sont etande
+on peut en mode auto controlee les autres entre, pour :
+un apuit simple sur BP_Babord : code fonction : 0100 et led ledBabord s'allume une fois et ilya un simple bip de out_bip
+un apuit simple sur BP_Tribord : code fonction : 0111 et led ledTribord s'allume une fois et ilya un simple bip de out_bip
+un apuit long sur BP_Babord : code fonction : 0101 et led ledBabord s'allume et clignote jusqua relache et ilya une double bip de out_bip
+un apuit long sur BP_Tribord : code fonction : 0110 et led ledTribord s'allume et clignote jusqua relache et ilya une double bip de out_bip
+
+
+
+
+pour le fonctionnement il faut geree des temporisateur pour les led et les appuis et le code fonction sera une sortie sur 4 bits 
+le est sur clk_50M en entre de la carte et un bp pour la remis a zero 
+
+
+
+-- valeurs de codeFonction:
+-- =0000: pas d'action, le pilote est en veille
+-- =0001: mode manuel action vérin babord
+-- =0010: mode manuel action vérin tribord
+-- =0011: mode pilote automatique/cap
+-- =0100: incrément de 1° consigne de cap
+-- =0101: incrément de 10° consigne de cap
+-- =0111: décrément de 1° consigne de cap
+-- =0110: décrément de 10° consigne de cap
