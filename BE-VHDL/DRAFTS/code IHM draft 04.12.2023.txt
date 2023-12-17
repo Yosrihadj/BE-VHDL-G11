@@ -1,0 +1,208 @@
+pour ce code, dans le mode manuel, ajouter les deux etats suivantes:
+Babord: commande par le bouton pousoir BP_Babord, il sera dans le mode manuel, si on appuis sur ce bouton, on aura en sortie le code fonction 0001 et la led ledBabord clignote une fois 
+Tribord: commande par le bouton pousoir BP_Tribord, il sera dans le mode manuel, si on appuis sur ce bouton, on aura en sortie le code fonction 0010 et la led ledTribord clignote une fois 
+
+
+
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+----use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity IHM is
+    Port ( BP_Babord, BP_Tribord, BP_STBY, clk_50M, raz_n : in STD_LOGIC;
+           ledBabord, ledTribord, ledSTBY, out_bip : out STD_LOGIC;
+           codeFonction : out STD_LOGIC_VECTOR(3 downto 0));
+end IHM;
+
+architecture Behavioral of IHM is
+    type State_Type is (Manual_Mode, Auto_Mode, Auto_Long_Press, Auto_Babord, Auto_Tribord, Auto_Babord_Long, Auto_Tribord_Long);
+    signal state, next_state : State_Type;
+    signal codeFonction_reg, codeFonction_next : STD_LOGIC_VECTOR(3 downto 0) := "0000";
+    signal ledBabord_reg, ledTribord_reg, ledSTBY_reg, out_bip_reg : STD_LOGIC := '0';
+    signal ledBabord_next, ledTribord_next, ledSTBY_next, out_bip_next : STD_LOGIC := '0';
+    signal ledTimer, bipTimer : integer := 0;
+	 signal pressTimer : integer := 0;
+    constant PRESS_TIME_THRESHOLD : integer := 50000000; -- 1s in clk_50M cycles
+    constant LED_BLINK_CYCLE : integer := 50000000;     -- 1s for LED blink cycle
+
+begin
+    process(clk_50M, raz_n)
+    begin 
+	 if raz_n = '1' then
+    state <= Manual_Mode;
+    codeFonction_reg <= "0000";
+    ledBabord_reg <= '0';
+    ledTribord_reg <= '0';
+    ledSTBY_reg <= '0';
+    out_bip_reg <= '0';
+    ledTimer <= 0;
+    bipTimer <= 0;
+elsif rising_edge(clk_50M) then
+state <= next_state;
+            codeFonction_reg <= codeFonction_next;
+            ledBabord_reg <= ledBabord_next;
+            ledTribord_reg <= ledTribord_next;
+            ledSTBY_reg <= ledSTBY_next;
+            out_bip_reg <= out_bip_next;
+        end if;
+    end process;
+
+	 
+	 
+
+    process(clk_50M)
+    begin
+        if rising_edge(clk_50M) then
+            -- State machine logic
+            case state is
+				
+                when Manual_Mode =>
+                    -- Handle transitions and actions for Manual_Mode
+                    if BP_STBY = '1' then
+                        next_state <= Auto_Mode;
+                        codeFonction_next <= "0011";
+                        ledSTBY_next <= '1';
+                        ledTimer <= 0;
+                        out_bip_next <= '1';
+                    elsif BP_Babord = '1' then
+                        next_state <= Auto_Babord;
+                        codeFonction_next <= "0100";
+                        ledBabord_next <= '1';
+                        out_bip_next <= '1';
+                        ledTimer <= 0;
+                    elsif BP_Tribord = '1' then
+                        next_state <= Auto_Tribord;
+                        codeFonction_next <= "0111";
+                        ledTribord_next <= '1';
+                        out_bip_next <= '1';
+                        ledTimer <= 0;
+                    else
+								next_state <= Manual_Mode;-- No other action in Manual_Mode
+                    end if;
+						  
+						  
+					 when Auto_Mode =>
+                -- Handle transitions and actions for Auto_Mode
+                if BP_STBY = '1' then
+                    next_state <= Manual_Mode;
+                    codeFonction_next <= "0000";
+                    ledSTBY_next <= '1';
+                    ledTimer <= 0;
+                    out_bip_next <= '1';
+                elsif BP_STBY = '0' and BP_Babord = '0' and BP_Tribord = '0' then
+                    next_state <= Auto_Mode;    -- No button pressed, staying in Auto_Mode
+                elsif BP_STBY = '0' and BP_Babord = '1' then
+                    next_state <= Auto_Babord;
+                    codeFonction_next <= "0100";
+                    ledBabord_next <= '1';
+                    out_bip_next <= '1';
+                    ledTimer <= 0;
+                elsif BP_STBY = '0' and BP_Tribord = '1' then
+                    next_state <= Auto_Tribord;
+                    codeFonction_next <= "0111";
+                    ledTribord_next <= '1';
+                    out_bip_next <= '1';
+                    ledTimer <= 0;
+                end if;
+						  
+						  
+                when Auto_Long_Press =>
+                    -- Handle transitions and actions for Auto_Long_Press
+                    if BP_STBY = '0' then
+                        next_state <= Auto_Mode;
+                    end if;
+                when Auto_Babord =>
+                    -- Handle transitions and actions for Auto_Babord
+                    if BP_STBY = '1' then
+                        next_state <= Manual_Mode;
+                        codeFonction_next <= "0000";
+                        ledSTBY_next <= '1';
+                        ledTimer <= 0;
+                        out_bip_next <= '1';
+                    elsif BP_STBY = '0' and BP_Babord = '0' then
+                        next_state <= Auto_Mode;
+                    elsif BP_STBY = '0' and BP_Babord = '1' and pressTimer >= PRESS_TIME_THRESHOLD then
+                        next_state <= Auto_Babord_Long;
+                        codeFonction_next <= "0101";
+                        ledBabord_next <= '1';
+                        out_bip_next <= '1';
+                        ledTimer <= 0;
+                    end if;
+                when Auto_Tribord =>
+                    -- Handle transitions and actions for Auto_Tribord
+                    if BP_STBY = '1' then
+                        next_state <= Manual_Mode;
+                        codeFonction_next <= "0000";
+                        ledSTBY_next <= '1';
+                        ledTimer <= 0;
+                        out_bip_next <= '1';
+                    elsif BP_STBY = '0' and BP_Tribord = '0' then
+                        next_state <= Auto_Mode;
+                    elsif BP_STBY = '0' and BP_Tribord = '1' and pressTimer >= PRESS_TIME_THRESHOLD then
+                        next_state <= Auto_Tribord_Long;
+                        codeFonction_next <= "0110";
+                        ledTribord_next <= '1';
+                        out_bip_next <= '1';
+                        ledTimer <= 0;
+                    end if;
+                when Auto_Babord_Long =>
+                    -- Handle transitions and actions for Auto_Babord_Long
+                    if BP_STBY = '1' then
+                        next_state <= Manual_Mode;
+                        codeFonction_next <= "0000";
+                        ledSTBY_next <= '1';
+                        ledTimer <= 0;
+                        out_bip_next <= '1';
+                    elsif BP_STBY = '0' and BP_Babord = '0' then
+                        next_state <= Auto_Mode;
+                    elsif BP_STBY = '0' and BP_Babord = '1' and pressTimer < PRESS_TIME_THRESHOLD then
+                        next_state <= Auto_Babord;
+                    end if;
+                when Auto_Tribord_Long =>
+                    -- Handle transitions and actions for Auto_Tribord_Long
+                    if BP_STBY = '1' then
+                        next_state <= Manual_Mode;
+                        codeFonction_next <= "0000";
+                        ledSTBY_next <= '1';
+                        ledTimer <= 0;
+                        out_bip_next <= '1';
+                    elsif BP_STBY = '0' and BP_Tribord = '0' then
+                        next_state <= Auto_Mode;
+                    elsif BP_STBY = '0' and BP_Tribord = '1' and pressTimer < PRESS_TIME_THRESHOLD then
+                        next_state <= Auto_Tribord;
+                    end if;
+--                --when others =>
+                    -- Handle other states if necessary
+            end case;
+
+-- LED and Buzzer timers
+        if ledTimer < LED_BLINK_CYCLE then
+            ledTimer <= ledTimer + 1;
+        else
+            ledTimer <= 0;
+        end if;
+
+        if bipTimer > 0 then
+            bipTimer <= bipTimer - 1;
+        end if;
+
+        -- Press timer for distinguishing short and long presses
+        if BP_STBY = '1' then
+            pressTimer <= pressTimer + 1;
+        else
+            pressTimer <= 0;
+        end if;
+    end if;
+end process;
+
+    -- Assigning outputs
+    ledBabord <= ledBabord_reg;
+    ledTribord <= ledTribord_reg;
+    ledSTBY <= ledSTBY_reg;
+    out_bip <= out_bip_reg;
+    codeFonction <= codeFonction_reg;
+
+end Behavioral;
