@@ -1,0 +1,76 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity IHMsimple is
+    Port ( clk_50MHz : in STD_LOGIC;
+           rst : in STD_LOGIC;
+           BP_STBY : in STD_LOGIC;
+           code_function : out STD_LOGIC_VECTOR(3 downto 0));
+end IHMsimple;
+
+architecture Behavioral of IHMsimple is
+    type StateType is (Idle, Manual, Auto);
+    signal current_state, next_state : StateType;
+    signal code_function_internal : STD_LOGIC_VECTOR(3 downto 0) := "0000";
+
+    -- Compteur pour diviser la fréquence
+    signal counter : integer range 0 to 49999999 := 0;
+
+    -- Signal d'horloge de 1 Hz
+    signal clk_1Hz : STD_LOGIC := '0';
+
+begin
+    process (clk_50MHz, rst)
+    begin
+        if rst = '1' then
+            counter <= 0;
+            current_state <= Idle;
+            -- code_function_internal is initialized to "0000" on reset
+        elsif rising_edge(clk_50MHz) then
+            if counter = 49999999 then
+                counter <= 0;
+                clk_1Hz <= not clk_1Hz; -- Inversion du signal à chaque seconde
+            else
+                counter <= counter + 1;
+            end if;
+
+            current_state <= next_state;
+        end if;
+    end process;
+
+    process (current_state, BP_STBY, clk_1Hz)
+    begin
+        case current_state is
+            when Idle =>
+                if BP_STBY = '1' then
+                    next_state <= Manual;
+                else
+                    next_state <= Idle;
+                end if;
+
+            when Manual =>
+                if BP_STBY = '1' then
+                    next_state <= Auto;
+                    code_function_internal <= "0011"; -- Si mode manuel, le code fonction est '0011'
+                else
+                    next_state <= Manual;
+                end if;
+
+            when Auto =>
+                if BP_STBY = '1' then
+                    next_state <= Manual;
+                else
+                    next_state <= Auto;
+                    code_function_internal <= "0011"; -- Si mode automatique, le code fonction est '0011'
+                end if;
+
+            when others =>
+                next_state <= Idle;
+        end case;
+    end process;
+
+    code_function <= code_function_internal;
+
+end Behavioral;

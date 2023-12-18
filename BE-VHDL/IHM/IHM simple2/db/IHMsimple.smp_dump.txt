@@ -1,0 +1,8 @@
+
+State Machine - |IHMsimple|IHMsimpletest2:inst|next_state
+Name next_state.Tribord next_state.Babord next_state.Auto next_state.Manual next_state.Idle 
+next_state.Idle 0 0 0 0 0 
+next_state.Manual 0 0 0 1 1 
+next_state.Auto 0 0 1 0 1 
+next_state.Babord 0 1 0 0 1 
+next_state.Tribord 1 0 0 0 1 

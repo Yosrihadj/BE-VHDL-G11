@@ -1,0 +1,33 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "codeFonction[0]",
+					"strict" : false
+				},
+				{
+					"name" : "codeFonction[1]",
+					"strict" : false
+				},
+				{
+					"name" : "BP_STBY",
+					"strict" : false
+				},
+				{
+					"name" : "BP_Babord",
+					"strict" : false
+				},
+				{
+					"name" : "clk_50M",
+					"strict" : false
+				},
+				{
+					"name" : "BP_Tribord",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

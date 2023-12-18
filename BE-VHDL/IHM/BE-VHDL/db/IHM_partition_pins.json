@@ -1,0 +1,57 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "ledBabord",
+					"strict" : false
+				},
+				{
+					"name" : "ledTribord",
+					"strict" : false
+				},
+				{
+					"name" : "ledSTBY",
+					"strict" : false
+				},
+				{
+					"name" : "out_bip",
+					"strict" : false
+				},
+				{
+					"name" : "codeFonction[0]",
+					"strict" : false
+				},
+				{
+					"name" : "codeFonction[1]",
+					"strict" : false
+				},
+				{
+					"name" : "codeFonction[2]",
+					"strict" : false
+				},
+				{
+					"name" : "clk_50M",
+					"strict" : false
+				},
+				{
+					"name" : "raz_n",
+					"strict" : false
+				},
+				{
+					"name" : "BP_Babord",
+					"strict" : false
+				},
+				{
+					"name" : "BP_STBY",
+					"strict" : false
+				},
+				{
+					"name" : "BP_Tribord",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

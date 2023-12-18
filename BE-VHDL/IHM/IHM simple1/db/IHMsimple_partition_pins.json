@@ -1,0 +1,29 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "code_function[0]",
+					"strict" : false
+				},
+				{
+					"name" : "code_function[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ledSTBY",
+					"strict" : false
+				},
+				{
+					"name" : "clk_50MHz",
+					"strict" : false
+				},
+				{
+					"name" : "BP_STBY",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

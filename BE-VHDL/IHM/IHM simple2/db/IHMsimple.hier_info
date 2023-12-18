@@ -1,0 +1,61 @@
+|IHMsimple
+ledSTBY <= IHMsimpletest2:inst.ledSTBY
+clk_50MHz => IHMsimpletest2:inst.clk_50MHz
+BP_STBY => IHMsimpletest2:inst.BP_STBY
+BP_Babord => IHMsimpletest2:inst.BP_Babord
+BP_Tribord => IHMsimpletest2:inst.BP_Tribord
+ledBabord <= IHMsimpletest2:inst.ledBabord
+ledTribord <= IHMsimpletest2:inst.ledTribord
+code_function[0] <= IHMsimpletest2:inst.code_function[0]
+code_function[1] <= IHMsimpletest2:inst.code_function[1]
+code_function[2] <= IHMsimpletest2:inst.code_function[2]
+code_function[3] <= IHMsimpletest2:inst.code_function[3]
+
+
+|IHMsimple|IHMsimpletest2:inst
+clk_50MHz => blink_counter[0].CLK
+clk_50MHz => blink_counter[1].CLK
+clk_50MHz => blink_counter[2].CLK
+clk_50MHz => blink_counter[3].CLK
+clk_50MHz => blink_counter[4].CLK
+clk_50MHz => blink_counter[5].CLK
+clk_50MHz => blink_counter[6].CLK
+clk_50MHz => blink_counter[7].CLK
+clk_50MHz => blink_counter[8].CLK
+clk_50MHz => blink_counter[9].CLK
+clk_50MHz => blink_counter[10].CLK
+clk_50MHz => blink_counter[11].CLK
+clk_50MHz => blink_counter[12].CLK
+clk_50MHz => blink_counter[13].CLK
+clk_50MHz => blink_counter[14].CLK
+clk_50MHz => blink_counter[15].CLK
+clk_50MHz => blink_counter[16].CLK
+clk_50MHz => blink_counter[17].CLK
+clk_50MHz => blink_counter[18].CLK
+clk_50MHz => blink_counter[19].CLK
+clk_50MHz => blink_counter[20].CLK
+clk_50MHz => blink_counter[21].CLK
+clk_50MHz => blink_counter[22].CLK
+clk_50MHz => blink_counter[23].CLK
+clk_50MHz => blink_counter[24].CLK
+clk_50MHz => blink_counter[25].CLK
+clk_50MHz => ledSTBY_internal.CLK
+clk_50MHz => ledTribord_internal.CLK
+clk_50MHz => ledBabord_internal.CLK
+clk_50MHz => code_function_internal[0].CLK
+clk_50MHz => code_function_internal[1].CLK
+clk_50MHz => code_function_internal[2].CLK
+clk_50MHz => code_function_internal[3].CLK
+clk_50MHz => next_state~1.DATAIN
+BP_STBY => ~NO_FANOUT~
+BP_Babord => ~NO_FANOUT~
+BP_Tribord => ~NO_FANOUT~
+code_function[0] <= code_function_internal[0].DB_MAX_OUTPUT_PORT_TYPE
+code_function[1] <= code_function_internal[1].DB_MAX_OUTPUT_PORT_TYPE
+code_function[2] <= code_function_internal[2].DB_MAX_OUTPUT_PORT_TYPE
+code_function[3] <= code_function_internal[3].DB_MAX_OUTPUT_PORT_TYPE
+ledSTBY <= ledSTBY_internal.DB_MAX_OUTPUT_PORT_TYPE
+ledBabord <= ledBabord_internal.DB_MAX_OUTPUT_PORT_TYPE
+ledTribord <= ledTribord_internal.DB_MAX_OUTPUT_PORT_TYPE
+
+

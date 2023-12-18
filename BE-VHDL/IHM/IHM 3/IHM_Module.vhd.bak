@@ -1,0 +1,152 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity IHM_Module is
+    Port ( clk_50M : in STD_LOGIC;
+           BP_Babord : in STD_LOGIC;
+           BP_Tribord : in STD_LOGIC;
+           BP_STBY : in STD_LOGIC;
+           reset_n : in STD_LOGIC;
+           ledBabord : out STD_LOGIC;
+           ledTribord : out STD_LOGIC;
+           ledSTBY : out STD_LOGIC;
+           out_bip : out STD_LOGIC);
+end IHM_Module;
+
+architecture Behavioral of IHM_Module is
+    type State_Type is (S0, S1, S2, S3, S4, S5, S6, S7);
+    signal state : State_Type := S0;
+    signal enbl_tempo : STD_LOGIC := '0';
+    signal fin_tempo : STD_LOGIC := '0';
+    signal tempo_counter : integer range 0 to 50000000; -- Assuming a 50 MHz clock
+begin
+    process (reset_n, clk_50M)
+    begin
+        if reset_n = '1' then
+            state <= S0;
+            enbl_tempo <= '0';
+            fin_tempo <= '0';
+            tempo_counter <= 0;
+            ledSTBY <= '0';
+            ledBabord <= '0';
+            ledTribord <= '0';
+            out_bip <= '0';
+        elsif rising_edge(clk_50M) then
+            -- Gestion du compteur de temporisation
+            if enbl_tempo = '1' then
+                if tempo_counter > 0 then
+                    tempo_counter <= tempo_counter - 1;
+                else
+                    fin_tempo <= '1';
+                    enbl_tempo <= '0';
+                end if;
+            end if;
+
+            -- Machine à états
+            case state is
+                when S0 =>
+                    if BP_Tribord = '0' and BP_Babord = '1' and BP_STBY = '0' then
+                        state <= S1;
+                    elsif BP_Tribord = '1' and BP_Babord = '0' and BP_STBY = '0' then
+                        state <= S2;
+                    elsif BP_Tribord = '0' and BP_Babord = '0' and BP_STBY = '1' then
+                        state <= S3;
+                    end if;
+                    ledSTBY <= '1';
+                    ledBabord <= '0';
+                    ledTribord <= '0';
+                    out_bip <= '1';
+
+                when S1 =>
+                    if BP_Tribord = '0' and BP_Babord = '0' and BP_STBY = '0' then
+                        state <= S0;
+                    elsif BP_Tribord = '0' and BP_Babord = '1' and BP_STBY = '0' then
+                        state <= S1;
+                        ledSTBY <= '0';
+                        ledBabord <= '1';
+                        ledTribord <= '0';
+                        out_bip <= '1';
+                        enbl_tempo <= '0';
+                    else
+                        state <= S0;
+                    end if;
+
+                when S2 =>
+                    if BP_Tribord = '0' and BP_Babord = '0' and BP_STBY = '0' then
+                        state <= S0;
+                    elsif BP_Tribord = '0' and BP_Babord = '1' and BP_STBY = '0' then
+                        state <= S2;
+                        ledSTBY <= '0';
+                        ledBabord <= '0';
+                        ledTribord <= '1';
+                        out_bip <= '1';
+                        enbl_tempo <= '0';
+                    else
+                        state <= S0;
+                    end if;
+
+                when S3 =>
+                    if BP_Tribord = '0' and BP_Babord = '0' and BP_STBY = '0' then
+                        state <= S4;
+                    end if;
+                    ledSTBY <= '1';
+                    ledBabord <= '0';
+                    ledTribord <= '0';
+                    out_bip <= '1';
+
+                when S4 =>
+                    if BP_Tribord = '0' and BP_Babord = '0' and BP_STBY = '1' then
+                        state <= S5;
+                        out_bip <= '1';
+                    elsif BP_Tribord = '1' and BP_Babord = '0' and BP_STBY = '0' then
+                        state <= S7;
+                        enbl_tempo <= '1';
+                        out_bip <= '1';
+                    elsif BP_Tribord = '0' and BP_Babord = '1' and BP_STBY = '0' then
+                        state <= S6;
+                        enbl_tempo <= '1';
+                        out_bip <= '1';
+                    end if;
+                    ledSTBY <= '1';
+                    ledBabord <= '0';
+                    ledTribord <= '0';
+
+                when S5 =>
+                    if BP_Tribord = '0' and BP_Babord = '0' and BP_STBY = '0' then
+                        state <= S0;
+                    end if;
+
+                when S7 =>
+                    if BP_Tribord = '1' and BP_Babord = '0' and BP_STBY = '0' and fin_tempo = '1' then
+                        state <= S4;
+                        out_bip <= '1';
+                        enbl_tempo <= '0';
+                    elsif BP_Tribord = '0' and BP_Babord = '0' and BP_STBY = '0' and fin_tempo = '0' then
+                        state <= S4;
+                        enbl_tempo <= '0';
+                    end if;
+                    ledSTBY <= '0';
+                    ledBabord <= '0';
+                    ledTribord <= '1';
+
+                when S6 =>
+                    if BP_Tribord = '0' and BP_Babord = '1' and BP_STBY = '0' and fin_tempo = '1' then
+                        state <= S4;
+                        out_bip <= '1';
+                        enbl_tempo <= '0';
+                    elsif BP_Tribord = '0' and BP_Babord = '0' and BP_STBY = '0' and fin_tempo = '0' then
+                        state <= S4;
+                        enbl_tempo <= '0';
+                    end if;
+                    ledSTBY <= '0';
+                    ledBabord <= '0';
+                    ledTribord <= '0';
+
+                when others =>
+                    state <= S0;
+            end case;
+        end if;
+    end process;
+end Behavioral;

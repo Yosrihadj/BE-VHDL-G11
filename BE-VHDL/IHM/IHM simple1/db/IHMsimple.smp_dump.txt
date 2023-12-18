@@ -1,0 +1,12 @@
+
+State Machine - |IHMsimple|current_state
+Name current_state.Auto current_state.Manual current_state.Idle 
+current_state.Idle 0 0 0 
+current_state.Manual 0 1 1 
+current_state.Auto 1 0 1 
+
+State Machine - |IHMsimple|next_state
+Name next_state.Auto next_state.Manual next_state.Idle 
+next_state.Idle 0 0 0 
+next_state.Manual 0 1 1 
+next_state.Auto 1 0 1 

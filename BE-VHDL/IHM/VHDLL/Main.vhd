@@ -1,0 +1,99 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity Main is
+    Port ( clk : in STD_LOGIC;
+           rst : in STD_LOGIC;
+           button : in STD_LOGIC;
+           led : buffer STD_LOGIC;
+           code : out STD_LOGIC_VECTOR(3 downto 0));
+end Main;
+
+architecture Behavioral of Main is
+    signal count : integer := 0;
+    signal timer : integer := 0;
+    signal long_press : boolean := false;
+    signal short_press : boolean := false;
+    signal state : integer := 0;
+    signal clk_div : STD_LOGIC;
+	 --signal button_last : STD_LOGIC:= '0';
+
+begin
+
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            count <= 0;
+            timer <= 0;
+            long_press <= false;
+            short_press <= false;
+            state <= 0;
+            clk_div <= '0';
+        elsif rising_edge(clk) then
+            if count = 50000000/2 - 1 then -- divide clock to get 1Hz
+                count <= 0;
+                clk_div <= not clk_div;
+            else
+                count <= count + 1;
+            end if;
+            
+            if button = '1' then --and button_last ='0'then
+                timer <= timer + 1;
+            else
+                timer <= 0;
+            end if;
+
+            if timer >= 50000000*3 then -- 3 seconds long press
+                long_press <= true;
+                short_press <= false;
+            elsif timer >= 50000000*1 then -- 1 second short press
+                long_press <= false;
+                short_press <= true;
+            else
+                long_press <= false;
+                short_press <= false;
+            end if;
+
+            if long_press then
+                if state = 0 then
+                    state <= 1;
+                else
+                    state <= 0;
+                end if;
+
+                if clk_div = '1' then
+                    led <= not led;
+                else
+                    led <= led;
+                end if;
+
+                code <= "0101";
+
+            elsif short_press then
+                if state = 0 then
+                    state <= 1;
+                else
+                    state <= 0;
+                end if;
+
+                if clk_div = '1' then
+                    led <= not led;
+                else
+                    led <= led;
+                end if;
+
+                code <= "0100";
+
+            else
+                led <= '0';
+                code <= "0000";
+            end if;
+
+        end if;
+
+    end process;
+--button_last <= button;
+	 
+end Behavioral;

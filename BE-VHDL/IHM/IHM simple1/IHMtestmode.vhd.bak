@@ -1,0 +1,49 @@
+process (clk_50MHz, BP_STBY)
+begin
+    if rising_edge(clk_50MHz) then
+        if counter = 49999999 then
+            counter <= 0;
+            clk_1Hz <= not clk_1Hz; -- Inversion du signal à chaque seconde
+        else
+            counter <= counter + 1;
+        end if;
+
+        -- Détecter le front montant du bouton poussoir
+        if BP_STBY = '1' and BP_STBY_last = '0' then
+            -- Basculement entre Auto et Manuel
+            if current_state = Manual then
+                next_state <= Auto;
+                code_function_internal <= "0011"; -- Si mode manuel, le code fonction est '0011'
+            else
+                next_state <= Manual;
+                code_function_internal <= "0000"; -- Si mode automatique, le code fonction est '0000'
+            end if;
+
+            -- Initialiser le compteur pour le clignotement
+            blink_counter <= 0;
+        else
+            next_state <= current_state;
+        end if;
+
+        -- Gérer le clignotement de la LED
+        if current_state = Manual then
+            -- En mode manuel, la LED reste allumée en permanence
+            ledSTBY_internal <= '1';
+        else
+            -- En mode automatique, la LED clignote une fois lors du changement de mode
+            if blink_counter < BLINK_DURATION / 2 then
+                ledSTBY_internal <= '1';  -- Activer la LED pendant la moitié de la durée
+            else
+                ledSTBY_internal <= '0';
+            end if;
+
+            -- Mettre à jour le compteur de clignotement
+            if blink_counter < BLINK_DURATION then
+                blink_counter <= blink_counter + 1;
+            end if;
+        end if;
+
+        current_state <= next_state;
+        BP_STBY_last <= BP_STBY;
+    end if;
+end process;

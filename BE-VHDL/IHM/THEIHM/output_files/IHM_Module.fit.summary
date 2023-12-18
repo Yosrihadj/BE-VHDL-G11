@@ -1,0 +1,16 @@
+Fitter Status : Successful - Fri Dec 15 10:53:29 2023
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : IHM_Module
+Top-level Entity Name : IHM_Module
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 3 / 22,320 ( < 1 % )
+    Total combinational functions : 3 / 22,320 ( < 1 % )
+    Dedicated logic registers : 2 / 22,320 ( < 1 % )
+Total registers : 2
+Total pins : 12 / 154 ( 8 % )
+Total virtual pins : 0
+Total memory bits : 0 / 608,256 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

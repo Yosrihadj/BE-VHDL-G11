@@ -1,17 +1,9 @@
 BE VHDL (LISEZ-MOI): ici les différentes parties à réaliser sur Quartus II 18, Platfor Desogner et Nios II sofar tools fpr eqlipse sur la carte DE0 Nano:
 
-- SOPC
+- SOPC 1 et SOPC 2
 
 -COMPAS
 
--
-
--
-
--
-
--
-
--
+-IHM
 
 

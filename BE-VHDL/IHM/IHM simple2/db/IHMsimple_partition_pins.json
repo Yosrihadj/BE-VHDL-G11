@@ -1,0 +1,25 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "ledSTBY",
+					"strict" : false
+				},
+				{
+					"name" : "ledBabord",
+					"strict" : false
+				},
+				{
+					"name" : "ledTribord",
+					"strict" : false
+				},
+				{
+					"name" : "clk_50MHz",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

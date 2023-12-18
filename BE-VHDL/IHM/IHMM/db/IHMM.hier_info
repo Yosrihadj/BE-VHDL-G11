@@ -1,0 +1,33 @@
+|block1
+pin_name5[0] <= ButtonControl:inst.code_fonction[0]
+pin_name5[1] <= ButtonControl:inst.code_fonction[1]
+pin_name5[2] <= ButtonControl:inst.code_fonction[2]
+pin_name5[3] <= ButtonControl:inst.code_fonction[3]
+pin_name1 => ButtonControl:inst.BP_Babord
+pin_name2 => ButtonControl:inst.BP_Tribord
+pin_name3 => ButtonControl:inst.BP_STBY
+pin_name4 => ButtonControl:inst.clk_50M
+
+
+|block1|ButtonControl:inst
+BP_Babord => process_0.IN1
+BP_Babord => BP_Babord_last.DATAIN
+BP_Tribord => process_0.IN1
+BP_Tribord => BP_Tribord_last.DATAIN
+BP_STBY => process_0.IN1
+BP_STBY => BP_STBY_last.DATAIN
+clk_50M => code_fonction[0]~reg0.CLK
+clk_50M => code_fonction[1]~reg0.CLK
+clk_50M => code_fonction[2]~reg0.CLK
+clk_50M => code_fonction[3]~reg0.CLK
+clk_50M => next_state.CLK
+clk_50M => BP_Tribord_last.CLK
+clk_50M => BP_Babord_last.CLK
+clk_50M => BP_STBY_last.CLK
+clk_50M => current_state.CLK
+code_fonction[0] <= code_fonction[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code_fonction[1] <= code_fonction[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code_fonction[2] <= code_fonction[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+code_fonction[3] <= code_fonction[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

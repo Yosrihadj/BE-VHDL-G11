@@ -1,0 +1,7 @@
+
+State Machine - |IHM_Module|state
+Name state.TEMPO_BP_TRIBORD state.TEMPO_BP_BABORD state.MODE_AUTO state.MODE_MANUEL 
+state.MODE_MANUEL 0 0 0 0 
+state.MODE_AUTO 0 0 1 1 
+state.TEMPO_BP_BABORD 0 1 0 1 
+state.TEMPO_BP_TRIBORD 1 0 0 1 
